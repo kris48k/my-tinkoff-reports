@@ -11,7 +11,7 @@ function Price(props) {
         curr = "€";
     }
     const valueDisplay = Number(value.toFixed(2)).toLocaleString();
-    return <div className="price">{valueDisplay + " " + curr}</div>;
+    return <span className="price">{valueDisplay + " " + curr}</span>;
 }
 
 export default Price;

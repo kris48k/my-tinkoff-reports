@@ -19,13 +19,17 @@ import {
 function App() {
   const [portfolio, setPortfolio] = useState(null);
   const [accounts, setAccounts] = useState(null);
+  const [currenciesBalance, setCurrenciesBalance] = useState(null);
 
    async function loadData(){
     const portfolio = await DataProvider.fetchPortfoloio();
     const accounts = await DataProvider.fetchAccount();
+    const currenciesBalance = await DataProvider.fetchCurrenciesBalance();
+    setCurrenciesBalance(currenciesBalance);
     setPortfolio(portfolio);
     setAccounts(accounts);
-    console.log(accounts);
+
+    console.log(accounts, currenciesBalance);
   }
 
   useEffect(() => {
@@ -48,13 +52,13 @@ function App() {
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <Switch>
               <Route path="/stocks/rus">
-                <StocksRubPage data={portfolio.stocks.rus} />
+                <StocksRubPage data={portfolio.stocks.rus} currencyBalance={currenciesBalance.RUB} currency={"RUB"} />
               </Route>
               <Route path="/stocks/usd">
-                <StocksRubPage data={portfolio.stocks.usd} />
+                <StocksRubPage data={portfolio.stocks.usd} currencyBalance={currenciesBalance.USD} currency={"USD"} />
               </Route>
               <Route path="/stocks/eur">
-                <StocksRubPage data={portfolio.stocks.eur} />
+                <StocksRubPage data={portfolio.stocks.eur} currencyBalance={currenciesBalance.EUR} currency={"EUR"} />
               </Route>
             </Switch>
               

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Price from './Price';
 
 function PortfolioItem(props) {
-    console.log("in portfolio imte", props);
     const {ticker, balance, name, averagePositionPrice, expectedYield, overall} = props.item || {};
     const displayName = name.substring(0,20) + (name.length > 20 ? "..." : "");
 

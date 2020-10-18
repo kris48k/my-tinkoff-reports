@@ -33,9 +33,20 @@ app.get('/api/accounts', async (req, res) => {
         const accounts = await tinkoffApi.accounts();
         res.send(accounts);
     } catch (ex) {
-        console.log("Exception in /portfolio", ex);
+        console.log("Exception in /accounts", ex);
     } 
 });
+
+app.get('/api/currenciesBalance', async (req, res) => {
+    try {
+        const currencies = await tinkoffApi.portfolioCurrencies();
+        res.send(currencies);
+    } catch (ex) {
+        console.log("Exception in /currencies", ex);
+    } 
+});
+
+
 
 app.listen(port, () => {
     console.log(`Tinkoff Backend listening at http://localhost:${port}`)

@@ -31,3 +31,10 @@
 .portfolio-item-summary {
     font-weight: bold;
 }
+
+.currency-balance {
+    text-align: left;
+}
+.currency-balance .price {
+    text-align: left;
+}
