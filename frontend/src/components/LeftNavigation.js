@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function LeftNavigation() {
@@ -9,8 +14,7 @@ function LeftNavigation() {
     });
   
     return (
-
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="sidebar-sticky pt-3">
               <ul class="nav flex-column">
                 <li class="nav-item">
@@ -19,22 +23,22 @@ function LeftNavigation() {
                     Stocks
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
-                                RUB
-                            </a>
+                          <Link to="/stocks/rus" className="nav-link active">
+                            <span data-feather="home"></span>
+                            RUB
+                          </Link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
-                                USD
-                            </a>
+                          <Link to="/stocks/usd" className="nav-link active">
+                            <span data-feather="home"></span>
+                              USD
+                          </Link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
-                                EUR
-                            </a>
+                          <Link to="/stocks/eur" className="nav-link active">
+                            <span data-feather="home"></span>
+                              EUR
+                          </Link>
                         </li>
                     </ul>
                   </a>
