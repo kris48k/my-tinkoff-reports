@@ -19,3 +19,15 @@
 .portfolio-item .number {
     padding-right: 10px;
 }
+
+.portfolio-table {
+    border: 1px solid #d8d8d8;
+}
+
+.portfolio-table th {
+    text-align: center;
+}
+
+.portfolio-item-summary {
+    font-weight: bold;
+}

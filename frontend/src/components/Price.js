@@ -10,7 +10,8 @@ function Price(props) {
     } else if (currency == "EUR") {
         curr = "€";
     }
-    return <div className="price">{value.toFixed(2) + " " + curr}</div>;
+    const valueDisplay = Number(value.toFixed(2)).toLocaleString();
+    return <div className="price">{valueDisplay + " " + curr}</div>;
 }
 
 export default Price;

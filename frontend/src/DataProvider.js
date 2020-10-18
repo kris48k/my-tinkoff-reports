@@ -16,6 +16,10 @@ function preparePortfolio(data) {
         currencies: []
     };
     for (const el of data.positions) {
+        el.overall = {
+            value: el.balance * el.averagePositionPrice.value,
+            currency: el.averagePositionPrice.currency
+        };
         if (el.instrumentType == "Stock") {
             if (el.averagePositionPrice.currency == "RUB") {
                 portfolio.stocks.rus.push(el);
