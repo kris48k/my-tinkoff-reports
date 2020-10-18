@@ -7,6 +7,15 @@
 
 }
 
-.price {
+.price, .number {
     text-align: right;
+}
+
+.portfolio-item td {
+    border-right: solid 1px #d8d8d8;
+    border-left: solid 1px #d8d8d8;
+}
+
+.portfolio-item .number {
+    padding-right: 10px;
 }

@@ -7,13 +7,13 @@ function PortfolioItem(props) {
     const overall = (balance*averagePositionPrice.value).toFixed(2);
     const displayName = name.substring(0,20) + (name.length > 20 ? "..." : "");
     return (
-        <tr>
+        <tr className="portfolio-item">
             <td>{ticker}</td>
             <td>{displayName}</td>
-            <td><Price {...averagePositionPrice} /></td>
-            <td>{balance}</td>
-            <td>{overall}</td>
-            <td><Price {...expectedYield} /></td>
+            <td className='number'><Price {...averagePositionPrice} /></td>
+            <td className='number'>{balance}</td>
+            <td className='number'>{overall}</td>
+            <td className='number'><Price {...expectedYield} /></td>
         </tr>
     );
 }
