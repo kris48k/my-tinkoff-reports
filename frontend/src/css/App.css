@@ -1,0 +1,12 @@
+.App {
+
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+
+}
+
+.price {
+    text-align: right;
+}
