@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tinkoff/invest-openapi-js-sdk": "^1.2.16",
+    "@tinkoff/invest-openapi-js-sdk": "1.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
   },
