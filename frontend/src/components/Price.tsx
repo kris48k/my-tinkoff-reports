@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Price(props) {
+function Price(props: { value: number; currency: string }) {
     const {value, currency} = props; 
     if (!value) return "";
     let curr = "?";

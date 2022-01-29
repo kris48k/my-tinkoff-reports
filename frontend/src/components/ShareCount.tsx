@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ShareCount(props) {
+function ShareCount(props: { value: number; operation: string; }) {
     const {value, operation} = props; 
     if (!value) return "";
     let displayValue, cssClass;

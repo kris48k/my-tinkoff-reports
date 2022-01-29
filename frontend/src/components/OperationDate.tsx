@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function OperationDate(props) {
+function OperationDate(props: { value: string; }) {
     const {value} = props; 
     if (!value) return "";
     
