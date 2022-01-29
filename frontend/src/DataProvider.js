@@ -4,6 +4,7 @@ const backendURL = 'http://localhost:3001';
 let portfolio_cache;
 let accounts_cache;
 let currenciesBalance_cache;
+let allstocks_cache;
 
 function preparePortfolio(data) {
     const portfolio = {
@@ -12,7 +13,7 @@ function preparePortfolio(data) {
             usd: [],
             eur: []
         },
-        etf: [],
+        etfs: [],
         bonds: [],
         currencies: []
     };
@@ -32,7 +33,7 @@ function preparePortfolio(data) {
         } else if (el.instrumentType == "Bond") {
             portfolio.bonds.push(el);
         } else if (el.instrumentType == "Etf") {
-            portfolio.etf.push(el);
+            portfolio.etfs.push(el);
         }
     }
     return portfolio;
@@ -42,6 +43,14 @@ function prepareCurrenciesBalance(currenciesBalance){
     const balance = {};
     currenciesBalance.forEach(e => balance[e.currency] = e.balance);
     return balance;
+}
+
+function prepareAllStocks(stocks) {
+    const result = {};
+    for(let stock of stocks.instruments) {
+        result[stock.ticker] = stock;
+    }
+    return result;
 }
 
 
@@ -79,6 +88,32 @@ export default {
             return currenciesBalance_cache;
         } else {
             console.log("Error in DataProvider/fetchCurrencies: " + response.status);
+        }
+    },
+
+    async fetchAllStocks(){
+        if (allstocks_cache) return allstocks_cache;
+        let response = await axios.get("/allstocks");
+        
+        if (response.status == 200) {
+            allstocks_cache = prepareAllStocks(response.data);
+            return allstocks_cache;
+        } else {
+            console.log("Error in DataProvider/fetchAllStocks: " + response.status);
+        }
+    },
+
+    async fetchHistory(figi){
+        let response = await axios.get("/history", {
+            params: { 
+                figi
+            }
+        });
+        
+        if (response.status == 200) {
+            return response.data;
+        } else {
+            console.log("Error in DataProvider/history: " + response.status);
         }
     }
 }
