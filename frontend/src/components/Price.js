@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function Price(props) {
     const {value, currency} = props; 
+    if (!value) return "";
     let curr = "?";
     if (currency == "RUB") {
         curr = "₽";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import PortfolioItem from './PortfolioItem';
-import Price from './Price';
+import PortfolioTableItem from './PortfolioTableItem';
+import Price from '../../components/Price';
 
 function PortfolioTable(props) {
     const {items} = props;
@@ -28,7 +28,7 @@ function PortfolioTable(props) {
             </tr>
           </thead>
           <tbody>
-              {items.map(item => <PortfolioItem key={item.ticker} item={item}/>)}
+              {items.map(item => <PortfolioTableItem key={item.ticker} item={item}/>)}
               <tr className="portfolio-item portfolio-item-summary">
                 <td colSpan="4">Overall</td>
                 <td className='number'><Price value={sumOverall} currency={currency} /></td>

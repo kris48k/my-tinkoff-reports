@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import PortfolioTable from '../components/PortfolioTable';
-import Price from '../components/Price';
+import PortfolioTable from './PortfolioTable';
+import Price from '../../components/Price';
 
 
-function StocksRubPage(props) {
+function PortfolioPage(props) {
     
     const {data, currencyBalance, currency} = props;
     
@@ -12,7 +12,7 @@ function StocksRubPage(props) {
             "No data"
         </div>
     );
-    console.log("StocksRubPage",props);
+    
     const shorts = data.filter(e => e.balance < 0);
     const longs = data.filter(e => e.balance > 0);
 
@@ -21,11 +21,11 @@ function StocksRubPage(props) {
         <div className="currency-balance">
             <h6>Currency Balance: <Price value={currencyBalance} currency={currency} /></h6>
         </div>
-        
         { shorts && shorts.length>0 &&
             (
-                <div>
-                    <h6>Short</h6>
+                <div>        
+                    <hr/>
+                    <h4>Short positions</h4>
                     <PortfolioTable items={shorts} />
                 </div>
             )
@@ -33,7 +33,8 @@ function StocksRubPage(props) {
         { longs && longs.length>0 &&
             (
                 <div>
-                    <h6>Longs</h6>
+                    <hr/>
+                    <h4>Long positions</h4>
                     <PortfolioTable items={longs} />
                 </div>
             )
@@ -43,4 +44,4 @@ function StocksRubPage(props) {
 
 }
 
-export default StocksRubPage;
+export default PortfolioPage;
