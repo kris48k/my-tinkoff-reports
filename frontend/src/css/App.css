@@ -2,6 +2,29 @@
 
 }
 
+.app-content-wrapper {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    top: 40px;
+    padding-right: 0 !important;
+}
+
+.app-content {
+    overflow-y: scroll;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.app-title {
+    max-width: 100% !important;
+}
+
+.main {
+    overflow-y: scroll;
+    position:initial;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
 
@@ -32,8 +55,13 @@
     font-weight: bold;
 }
 
+.portfolio-item--ticker-link {
+    padding: 0 0 0 5px !important;
+}
+
 .currency-balance {
     text-align: left;
+    margin-top: 20px;
 }
 .currency-balance .price {
     text-align: left;
