@@ -111,7 +111,7 @@ export default {
         });
         
         if (response.status == 200) {
-            return response.data;
+            return response.data.operations.filter(item => item.payment!=0);
         } else {
             console.log("Error in DataProvider/history: " + response.status);
         }

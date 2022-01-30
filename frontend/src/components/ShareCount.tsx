@@ -1,8 +1,14 @@
+import { OperationTypeWithCommission } from '@tinkoff/invest-openapi-js-sdk';
 import React, { useState, useEffect } from 'react';
 
-function ShareCount(props: { value: number; operation: string; }) {
+interface IShareCountProps { 
+    value: number|undefined; 
+    operation: OperationTypeWithCommission|undefined;
+}
+
+function ShareCount(props: IShareCountProps): JSX.Element {
     const {value, operation} = props; 
-    if (!value) return "";
+    if (!value) return <span />;
     let displayValue, cssClass;
     if (operation=="Sell") 
     {

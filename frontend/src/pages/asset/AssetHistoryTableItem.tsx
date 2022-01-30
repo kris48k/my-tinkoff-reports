@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Price from '../../components/Price';
 import ShareCount from '../../components/ShareCount';
 import OperationDate from '../../components/OperationDate';
+import { Operation } from '@tinkoff/invest-openapi-js-sdk';
 
-function AssetHistoryTableItem(props) {
+function AssetHistoryTableItem(props: Operation) {
     const {date, operationType, currency, price, payment, quantityExecuted} = props;
 
     return (

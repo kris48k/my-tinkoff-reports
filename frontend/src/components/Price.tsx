@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-function Price(props: { value: number; currency: string }) {
+interface IPriceProps {
+    value: number | undefined; 
+    currency: string;
+}
+
+function Price(props: IPriceProps): JSX.Element {
     const {value, currency} = props; 
-    if (!value) return "";
+    if (!value) return <span/>;
     let curr = "?";
     if (currency == "RUB") {
         curr = "₽";

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-function OperationDate(props: { value: string; }) {
+interface IOperationDateProps{
+    value: string|undefined;
+}
+
+function OperationDate(props: IOperationDateProps): JSX.Element {
     const {value} = props; 
-    if (!value) return "";
+    if (!value) return <span/>;
     
     return <span className="date">{(new Date(value)).toUTCString()}</span>;
 }
