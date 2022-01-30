@@ -4,7 +4,7 @@ import Price from '../../components/Price';
 import { PortfolioPosition } from '@tinkoff/invest-openapi-js-sdk';
 
 
-function PortfolioPage(props: { data: Array<PortfolioPosition>; currencyBalance: number; currency: any; }) {
+function PortfolioPage(props: { data: Array<PortfolioPosition>; currencyBalance?: number; currency: any; }) {
     
     const {data, currencyBalance, currency} = props;
     

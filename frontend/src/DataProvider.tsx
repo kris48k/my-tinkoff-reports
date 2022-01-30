@@ -1,3 +1,4 @@
+import { Currency, Portfolio, PortfolioPosition } from '@tinkoff/invest-openapi-js-sdk';
 import axios from 'axios';
 const backendURL = 'http://localhost:3001';
 
@@ -6,8 +7,23 @@ let accounts_cache;
 let currenciesBalance_cache;
 let allstocks_cache;
 
-function preparePortfolio(data) {
-    const portfolio = {
+export interface IPortfolio {
+    stocks: {
+        rus: Array<PortfolioPosition>,
+        usd: Array<PortfolioPosition>
+        eur: Array<PortfolioPosition>
+    },
+    etfs: Array<PortfolioPosition>,
+    bonds: Array<PortfolioPosition>,
+    currencies: Array<PortfolioPosition>
+}
+
+export type ICurrencyBalance = {
+    [key in Currency]?: number;
+};
+
+function preparePortfolio(data: Portfolio): IPortfolio {
+    const portfolio: IPortfolio = {
         stocks:{
             rus: [],
             usd: [],
@@ -18,16 +34,12 @@ function preparePortfolio(data) {
         currencies: []
     };
     for (const el of data.positions) {
-        el.overall = {
-            value: el.balance * el.averagePositionPrice.value,
-            currency: el.averagePositionPrice.currency
-        };
         if (el.instrumentType == "Stock") {
-            if (el.averagePositionPrice.currency == "RUB") {
+            if (el.averagePositionPrice?.currency == "RUB") {
                 portfolio.stocks.rus.push(el);
-            } else if (el.averagePositionPrice.currency == "USD") {
+            } else if (el.averagePositionPrice?.currency == "USD") {
                 portfolio.stocks.usd.push(el);
-            } else if (el.averagePositionPrice.currency == "EUR") {
+            } else if (el.averagePositionPrice?.currency == "EUR") {
                 portfolio.stocks.eur.push(el);
             }
         } else if (el.instrumentType == "Bond") {
@@ -40,7 +52,7 @@ function preparePortfolio(data) {
 }
 
 function prepareCurrenciesBalance(currenciesBalance){
-    const balance = {};
+    const balance:ICurrencyBalance = {};
     currenciesBalance.forEach(e => balance[e.currency] = e.balance);
     return balance;
 }
@@ -64,6 +76,7 @@ export default {
             return portfolio_cache;
         } else {
             console.log("Error in DataProvider/fetchPortfoloio: " + response.status);
+            return [];
         }
     },
 
@@ -76,6 +89,7 @@ export default {
             return accounts_cache;
         } else {
             console.log("Error in DataProvider/fetchAccounts: " + response.status);
+            return [];
         }
     },
 
@@ -88,6 +102,7 @@ export default {
             return currenciesBalance_cache;
         } else {
             console.log("Error in DataProvider/fetchCurrencies: " + response.status);
+            return [];
         }
     },
 
@@ -100,6 +115,7 @@ export default {
             return allstocks_cache;
         } else {
             console.log("Error in DataProvider/fetchAllStocks: " + response.status);
+            return [];
         }
     },
 
@@ -111,9 +127,10 @@ export default {
         });
         
         if (response.status == 200) {
-            return response.data.operations.filter(item => item.payment!=0);
+            return response.data?.operations?.filter(item => item.payment!=0);
         } else {
             console.log("Error in DataProvider/history: " + response.status);
+            return [];
         }
     }
 }

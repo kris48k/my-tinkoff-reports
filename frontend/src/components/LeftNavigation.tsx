@@ -1,40 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
 
 
 function LeftNavigation() {
 
     useEffect(() => {
+      // @ts-expect-error
       window.feather.replace();// icons
     });
   
     return (
-          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="sidebar-sticky pt-3">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">
+          <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div className="sidebar-sticky pt-3">
+              <ul className="nav flex-column">
+                <li className="nav-item">
+                  <a className="nav-link active" href="#">
                     <span data-feather="home"></span>
                     Stocks
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
+                    <ul className="nav flex-column">
+                        <li className="nav-item">
                           <Link to="/stocks/rus" className="nav-link active">
                             <span data-feather="home"></span>
                             RUB
                           </Link>
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                           <Link to="/stocks/usd" className="nav-link active">
                             <span data-feather="home"></span>
                               USD
                           </Link>
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                           <Link to="/stocks/eur" className="nav-link active">
                             <span data-feather="home"></span>
                               EUR
@@ -43,20 +41,20 @@ function LeftNavigation() {
                     </ul>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <Link to="/bonds" className="nav-link active">
                     <span data-feather="shopping-cart"></span>
                     Bonds
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <Link to="/etfs" className="nav-link active">
                     <span data-feather="shopping-cart"></span>
                     ETFs
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
                     <span data-feather="bar-chart-2"></span>
                     Reports
                   </a>
