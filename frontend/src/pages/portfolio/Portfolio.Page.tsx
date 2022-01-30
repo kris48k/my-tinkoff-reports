@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PortfolioTable from './PortfolioTable';
 import Price from '../../components/Price';
+import { PortfolioPosition } from '@tinkoff/invest-openapi-js-sdk';
 
 
-function PortfolioPage(props) {
+function PortfolioPage(props: { data: Array<PortfolioPosition>; currencyBalance: number; currency: any; }) {
     
     const {data, currencyBalance, currency} = props;
     
@@ -17,7 +18,7 @@ function PortfolioPage(props) {
     const longs = data.filter(e => e.balance > 0);
 
   return (
-    <div class="stocks-rub-page">
+    <div className="stocks-rub-page">
         <div className="currency-balance">
             <h6>Currency Balance: <Price value={currencyBalance} currency={currency} /></h6>
         </div>

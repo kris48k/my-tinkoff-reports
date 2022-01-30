@@ -15,8 +15,8 @@ function PortfolioTable(props) {
     })
     
     return (
-      <div class="table-responsive">
-        <table class="table table-striped table-sm portfolio-table">
+      <div className="table-responsive">
+        <table className="table table-striped table-sm portfolio-table">
           <thead>
             <tr>
               <th>Ticker</th>
@@ -30,7 +30,7 @@ function PortfolioTable(props) {
           <tbody>
               {items.map(item => <PortfolioTableItem key={item.ticker} item={item}/>)}
               <tr className="portfolio-item portfolio-item-summary">
-                <td colSpan="4">Overall</td>
+                <td colSpan={4}>Overall</td>
                 <td className='number'><Price value={sumOverall} currency={currency} /></td>
                 <td className='number'><Price value={sumEarned} currency={currency} /></td>
             </tr>
