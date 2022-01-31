@@ -16,6 +16,7 @@ Frontend:
 - React
 - Bootstrap
 - React-Router
+- Typescript
 
 Backend:
 - Express

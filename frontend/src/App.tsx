@@ -65,12 +65,10 @@ function App() {
                 <PortfolioPage data={portfolio.bonds} currencyBalance={currenciesBalance?.RUB} currency={"EUR"} />
               </Route>
               <Route path="/asset/:ticker" component={AssetPage} />
-            </Switch>
-              
+            </Switch>  
             </main>
           </Router>
       </div>
-    
     </div>
   );
 }

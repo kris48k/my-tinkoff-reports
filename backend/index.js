@@ -6,14 +6,12 @@ config();
 
 const app = express();
 const port = process.env.SERVER_PORT;
-
-const apiURL = 'https://api-invest.tinkoff.ru/openapi';
-const sandboxApiURL = 'https://api-invest.tinkoff.ru/openapi/sandbox/';
-const socketURL = 'wss://api-invest.tinkoff.ru/openapi/md/v1/md-openapi/ws';
+const apiURL = process.env.TINKOFF_API_URL;
+const socketURL = process.env.TINKOFF_API_SOCKET_URL;
 
 const secretToken = process.env.TINKOFF_API_TOKEN; 
 
-const tinkoffApi = new OpenAPI({ apiURL: apiURL, secretToken: secretToken, socketURL });
+const tinkoffApi = new OpenAPI({ apiURL, secretToken: secretToken, socketURL });
 
 app.get('/', (req, res) => {
     res.send('OK!');
